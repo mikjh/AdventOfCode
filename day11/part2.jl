@@ -215,18 +215,18 @@ function simulate(comma_separated_list)
             break
         end
         direction = newDirection(direction,int_code.output)
-        println("")
-        print("Input: ")
-        print(input)
-        print(" position: ")
-        print(current_position)
+        #println("")
+        #print("Input: ")
+        #print(input)
+        #print(" position: ")
+        #print(current_position)
         current_position = newPosition(current_position,direction)
-        print(" new position: ")
-        print(current_position)
-        print(" direction: ")
-        print(direction)
-        print(" output: ")
-        print(int_code.output)
+        #print(" new position: ")
+        #print(current_position)
+        #print(" direction: ")
+        #print(direction)
+        #print(" output: ")
+        #print(int_code.output)
     end
 
     return plates
@@ -237,6 +237,7 @@ plates = simulate("3,8,1005,8,299,1106,0,11,0,0,0,104,1,104,0,3,8,102,-1,8,10,10
 
 using Plots
 
-white_marks = [[key[1] key[2]] for (key,value) in plates if value == "w"]
+white_marks = [[key[1], key[2]] for (key,value) in plates if value == "w"]
+p = hcat(white_marks...)'
 
-plot(white_marks[1][1],white_marks[1][2])
+scatter(p[:,1],p[:,2],xlims=(-20,60),ylims=(-20,20))
